@@ -1,4 +1,4 @@
-defmodule PackageTrack.PostalCode.DataParser.Test do
+defmodule PackageTrack.PostalCode.DataParserTest do
   use ExUnit.Case
   alias PackageTrack.PostalCode.DataParser
   doctest PackageTrack

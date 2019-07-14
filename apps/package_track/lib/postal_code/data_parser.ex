@@ -36,8 +36,8 @@ defmodule PackageTrack.PostalCode.DataParser do
   end
 
   defp format_row([postal_code, latitude, longitude]) do
-      latitude = parse_number(latitude)
-      longitude = parse_number(longitude)
-      {postal_code, {latitude, longitude}}
+    latitude = parse_number(latitude)
+    longitude = parse_number(longitude)
+    {postal_code, {latitude, longitude}}
   end
 end

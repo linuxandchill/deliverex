@@ -1,5 +1,6 @@
 defmodule PackageTrack.PostalCode.Store do
   use GenServer
+  require Logger
   alias PackageTrack.PostalCode.DataParser
 
   def start_link do
@@ -7,6 +8,7 @@ defmodule PackageTrack.PostalCode.Store do
   end
 
   def init(_) do
+    # IO.inspect init_state => %{}
     {:ok, DataParser.parse_data()}
   end
 
@@ -20,5 +22,12 @@ defmodule PackageTrack.PostalCode.Store do
     # second arg is what caller will receive
     # third arg is new state of GenServer process
     {:reply, geolocation, geolocation_data}
+  end
+
+  defp handle_nil_geolocation(geolocation) do
+    case geolocation do
+      {lat, long} -> {lat, long}
+      nil -> Logger.info("Information for this postal code is not available")
+    end
   end
 end
